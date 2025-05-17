@@ -58,8 +58,6 @@ def id_to_fruit(fruit_id: int , fruitsArray: List[str]) -> str:
     #     if i == fruit_id:
     #         return fruitsArray[i]
     return fruitsArray[fruit_id]
-
-
 if __name__ == "__main__":
     name1 = id_to_fruit(
         1,
@@ -75,143 +73,141 @@ if __name__ == "__main__":
         4,
         ["apple", "orange", "melon", "kiwi", "strawberry"]
     )
+    print(f" name4 {name4}")
 
     print("OFF")
 # </editor-fold>
 
 # <editor-fold desc="Exercise 2">
 # You can copy this code to your personal pipeline project or execute it here.
-# def swap(coords: np.ndarray):
-#     """
-#     This method will flip the x and y coordinates in the coords array.
-#
-#     :param coords: A numpy array of bounding box coordinates with shape [n,5] in format:
-#         ::
-#
-#             [[x11, y11, x12, y12, classid1],
-#              [x21, y21, x22, y22, classid2],
-#              ...
-#              [xn1, yn1, xn2, yn2, classid3]]
-#
-#     :return: The new numpy array where the x and y coordinates are flipped.
-#
-#     **This method is part of a series of debugging exercises.**
-#     **Each Python method of this series contains bug that needs to be found.**
-#
-#     | ``1   Can you spot the obvious error?``
-#     | ``2   After fixing the obvious error it is still wrong, how can this be fixed?``
-#
-#     >>> import numpy as np
-#     >>> coords = np.array([[10, 5, 15, 6, 0],
-#     ...                    [11, 3, 13, 6, 0],
-#     ...                    [5, 3, 13, 6, 1],
-#     ...                    [4, 4, 13, 6, 1],
-#     ...                    [6, 5, 13, 16, 1]])
-#     >>> swapped_coords = swap(coords)
-#
-#     The example demonstrates the issue. The returned swapped_coords are expected to have swapped
-#     x and y coordinates in each of the rows.
-#     """
-#     # coords_copy = coords.copy()
-#     # coords[:, 0], coords[:, 1], coords[:, 2], coords[:, 3], = coords_copy[:, 1], coords_copy[:, 0], coords_copy[:, 3], coords_copy[:, 2]
-#
-#     for row in coords:
-#         row[0] , row[1] = row[1], row[0]
-#         row[2] , row[3] = row[3], row[2]
-#
-#     return coords
-#
-#
-#
-#
-# if __name__ == "__main__":
-#     coords = np.array([[10, 5, 15, 6, 0],
-#                        [11, 3, 13, 6, 0],
-#                        [5, 3, 13, 6, 1],
-#                        [4, 4, 13, 6, 1],
-#                        [6, 5, 13, 16, 1]])
-#     swapped_coords = swap(coords)
-#
-#     print(f"{swapped_coords}")
+def swap(coords: np.ndarray):
+    """
+    This method will flip the x and y coordinates in the coords array.
+
+    :param coords: A numpy array of bounding box coordinates with shape [n,5] in format:
+        ::
+
+            [[x11, y11, x12, y12, classid1],
+             [x21, y21, x22, y22, classid2],
+             ...
+             [xn1, yn1, xn2, yn2, classid3]]
+
+    :return: The new numpy array where the x and y coordinates are flipped.
+
+    **This method is part of a series of debugging exercises.**
+    **Each Python method of this series contains bug that needs to be found.**
+
+    | ``1   Can you spot the obvious error?``
+    | ``2   After fixing the obvious error it is still wrong, how can this be fixed?``
+
+    >>> import numpy as np
+    >>> coords = np.array([[10, 5, 15, 6, 0],
+    ...                    [11, 3, 13, 6, 0],
+    ...                    [5, 3, 13, 6, 1],
+    ...                    [4, 4, 13, 6, 1],
+    ...                    [6, 5, 13, 16, 1]])
+    >>> swapped_coords = swap(coords)
+
+    The example demonstrates the issue. The returned swapped_coords are expected to have swapped
+    x and y coordinates in each of the rows.
+    """
+    # coords_copy = coords.copy()
+    # coords[:, 0], coords[:, 1], coords[:, 2], coords[:, 3], = coords_copy[:, 1], coords_copy[:, 0], coords_copy[:, 3], coords_copy[:, 2]
+
+    for row in coords:
+        row[0] , row[1] = row[1], row[0]
+        row[2] , row[3] = row[3], row[2]
+
+    return coords
+if __name__ == "__main__":
+    coords = np.array([[10, 5, 15, 6, 0],
+                       [11, 3, 13, 6, 0],
+                       [5, 3, 13, 6, 1],
+                       [4, 4, 13, 6, 1],
+                       [6, 5, 13, 16, 1]])
+    swapped_coords = swap(coords)
+
+    print(f"{swapped_coords}")
 # </editor-fold>
 
 # <editor-fold desc="Exercise 3">
 # You can copy this code to your personal pipeline project or execute it here.
-# def plot_data(csv_file_path: str):
-#     """
-#     This code plots the precision-recall curve based on data from a .csv file,
-#     where precision is on the x-axis and recall is on the y-axis.
-#     It it not so important right now what precision and recall means.
-#
-#     :param csv_file_path: The CSV file containing the data to plot.
-#
-#
-#     **This method is part of a series of debugging exercises.**
-#     **Each Python method of this series contains bug that needs to be found.**
-#
-#     | ``1   For some reason the plot is not showing correctly, can you find out what is going wrong?``
-#     | ``2   How could this be fixed?``
-#
-#     This example demonstrates the issue.
-#     It first generates some data in a csv file format and the plots it using the ``plot_data`` method.
-#     If you manually check the coordinates and then check the plot, they do not correspond.
-#
-#     >>> f = open("data_file.csv", "w")
-#     >>> w = csv.writer(f)
-#     >>> _ = w.writerow(["precision", "recall"])
-#     >>> w.writerows([[0.013,0.951],
-#     ...              [0.376,0.851],
-#     ...              [0.441,0.839],
-#     ...              [0.570,0.758],
-#     ...              [0.635,0.674],
-#     ...              [0.721,0.604],
-#     ...              [0.837,0.531],
-#     ...              [0.860,0.453],
-#     ...              [0.962,0.348],
-#     ...              [0.982,0.273],
-#     ...              [1.0,0.0]])
-#     >>> f.close()
-#     >>> plot_data('data_file.csv')
-#     """
-#     # load data
-#     results = []
-#     with open(csv_file_path) as result_csv:
-#         csv_reader = csv.reader(result_csv, delimiter=',')
-#         next(csv_reader)
-#         for row in csv_reader:
-#             if len(row) != 0:
-#                 results.append(row)
-#         results = np.stack(results)
-#
-#     # plot precision-recall curve
-#     # x , y
-#     plt.plot(results[:, 0], results[:, 1])
-#     plt.ylim([-0.05, 1.05])
-#     plt.xlim([-0.05, 1.05])
-#     plt.xlabel('Precision')
-#     plt.ylabel('Recall')
-#     plt.show()
-# if __name__ == "__main__":
-#
-#     f = open("data_file.csv", "w")
-#     w = csv.writer(f)
-#     _ = w.writerow(["precision", "recall"])
-#     w.writerows([[0.013,0.951], #[x, y]
-#                  [0.376,0.851],
-#                  [0.441,0.839],
-#                  [0.570,0.758],
-#                  [0.635,0.674],
-#                  [0.721,0.604],
-#                  [0.837,0.531],
-#                  [0.860,0.453],
-#                  [0.962,0.348],
-#                  [0.982,0.273],
-#                  [1.0,0.0]])
-#     f.close()
-#     plot_data('data_file.csv')
+def plot_data(csv_file_path: str):
+    """
+    This code plots the precision-recall curve based on data from a .csv file,
+    where precision is on the x-axis and recall is on the y-axis.
+    It it not so important right now what precision and recall means.
+
+    :param csv_file_path: The CSV file containing the data to plot.
+
+
+    **This method is part of a series of debugging exercises.**
+    **Each Python method of this series contains bug that needs to be found.**
+
+    | ``1   For some reason the plot is not showing correctly, can you find out what is going wrong?``
+    | ``2   How could this be fixed?``
+
+    This example demonstrates the issue.
+    It first generates some data in a csv file format and the plots it using the ``plot_data`` method.
+    If you manually check the coordinates and then check the plot, they do not correspond.
+
+    >>> f = open("data_file.csv", "w")
+    >>> w = csv.writer(f)
+    >>> _ = w.writerow(["precision", "recall"])
+    >>> w.writerows([[0.013,0.951],
+    ...              [0.376,0.851],
+    ...              [0.441,0.839],
+    ...              [0.570,0.758],
+    ...              [0.635,0.674],
+    ...              [0.721,0.604],
+    ...              [0.837,0.531],
+    ...              [0.860,0.453],
+    ...              [0.962,0.348],
+    ...              [0.982,0.273],
+    ...              [1.0,0.0]])
+    >>> f.close()
+    >>> plot_data('data_file.csv')
+    """
+    # load data
+    results = []
+    with open(csv_file_path) as result_csv:
+        csv_reader = csv.reader(result_csv, delimiter=',')
+        next(csv_reader)
+        for row in csv_reader:
+            if len(row) != 0:
+                results.append(row)
+        results = np.stack(results)
+
+    # plot precision-recall curve
+    # x , y
+    plt.plot(results[:, 0], results[:, 1])
+    plt.ylim([-0.05, 1.05])
+    plt.xlim([-0.05, 1.05])
+    plt.xlabel('Precision')
+    plt.ylabel('Recall')
+    plt.show()
+if __name__ == "__main__":
+
+    f = open("data_file.csv", "w")
+    w = csv.writer(f)
+    _ = w.writerow(["precision", "recall"])
+    w.writerows([[0.013,0.951], #[x, y]
+                 [0.376,0.851],
+                 [0.441,0.839],
+                 [0.570,0.758],
+                 [0.635,0.674],
+                 [0.721,0.604],
+                 [0.837,0.531],
+                 [0.860,0.453],
+                 [0.962,0.348],
+                 [0.982,0.273],
+                 [1.0,0.0]])
+    f.close()
+    plot_data('data_file.csv')
 # </editor-fold>
 
-# You can copy this code to your personal pipeline project or execute it here.
+# <editor-fold desc="Excercise 4">
+
 class Generator(nn.Module):
     """
     Generator class for the GAN
@@ -234,8 +230,6 @@ class Generator(nn.Module):
         output = self.model(x)
         output = output.view(x.size(0), 1, 28, 28)
         return output
-
-# You can copy this code to your personal pipeline project or execute it here.
 class Discriminator(nn.Module):
     """
     Discriminator class for the GAN
@@ -260,8 +254,6 @@ class Discriminator(nn.Module):
         x = x.view(x.size(0), 784)
         output = self.model(x)
         return output
-
-# You can copy this code to your personal pipeline project or execute it here.
 def train_gan(batch_size: int = 64, num_epochs: int = 100, device: str = "cuda:0" if torch.cuda.is_available() else "cpu"):
     import torchvision
     import torch
@@ -341,19 +333,8 @@ def train_gan(batch_size: int = 64, num_epochs: int = 100, device: str = "cuda:0
                 fig.tight_layout()
                 clear_output(wait=True)
                 display(fig)
-
-
-
 if __name__ == "__main__":
     train_gan(batch_size=64, num_epochs=100)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# </editor-fold>
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
