@@ -1,8 +1,10 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
+"""
+ANSWER:
+   first we added if when reading data from csv file to ignore empty rows(if len(row) != 0) to ensure that don't get any out of index error while reading the data.
+   secondly based on exercise comment the Recall should be in y-axis and Precision in x-axis,so we should change the plot function reading order
+   (plt.plot(results[:, 0], results[:, 1]) instead of plt.plot(results[:, 1], results[:, 0]))
+"""
 import matplotlib
 
 matplotlib.use('TkAgg')

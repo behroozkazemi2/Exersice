@@ -1,8 +1,10 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
+"""
+ANSWER:
+    Replace set with array because set is just unique and doesn't care about elements order,
+    so we change set with array to support order in our code. array use index base, so we can find our element with fruit_id (or use for loop like base code to find our target).
+    notably we con not use sorted(set) because it changes the order of elements alphabetically, which may not match the original input order and leads to incorrect indexing.
+"""
 import csv
 import matplotlib
 

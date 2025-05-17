@@ -1,7 +1,13 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+"""
+ANSWER:
+    The original code attempted to swap x and y coordinates in-place using like:
+        row[0], row[1] = row[1], row[0]
+    However, this works correctly only when swapping two values. In this context, since multiple assignments happen in sequence,
+    and both x and y are stored in the same row array, it can lead to unintended overwrites if not handled carefully.
+    A better and safer approach is to make a copy of the original coordinates before modifying them,
+    or use slicing with numpy to manipulate columns efficiently.
+    NOTE: For small arrays like in this exercise, will work.
+"""
 
 import matplotlib
 
